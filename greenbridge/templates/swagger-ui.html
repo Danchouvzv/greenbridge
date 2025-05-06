@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GreenBridge API Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .swagger-ui .topbar {
+        background-color: #2C8C5E;
+      }
+      .swagger-ui .info .title {
+        color: #2C8C5E;
+      }
+      .swagger-ui .btn.authorize {
+        color: #2C8C5E;
+        border-color: #2C8C5E;
+      }
+      .swagger-ui .btn.authorize svg {
+        fill: #2C8C5E;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="//unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <script src="//unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"></script>
+    <script>
+    const ui = SwaggerUIBundle({
+        url: "{% url schema_url %}",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "BaseLayout",
+        requestInterceptor: (request) => {
+          const csrfToken = document.cookie.split('; ').find(cookie => cookie.startsWith('csrftoken='));
+          if (csrfToken) {
+            request.headers['X-CSRFToken'] = csrfToken.split('=')[1];
+          }
+          return request;
+        }
+      })
+    </script>
+  </body>
+</html> 
