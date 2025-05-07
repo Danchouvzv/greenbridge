@@ -410,22 +410,22 @@ We welcome contributions to GreenBridge! Here's how you can help:
 
 ## 🔄 Project Roadmap
 
-- **Q2 2023**
+- **Q2 2025**
   - Core waste management functionality
   - Basic geospatial services
   - User authentication and roles
 
-- **Q3 2023**
+- **Q3 2025**
   - Advanced route optimization
   - Mobile-optimized interfaces
   - Reporting and analytics
 
-- **Q4 2023**
+- **Q4 2025**
   - AI-powered waste classification
   - Blockchain integration for material tracking
   - Public API for third-party integration
 
-- **Q1 2024**
+- **Q1 2026**
   - Marketplace for recycled materials
   - Carbon footprint calculation
   - Advanced analytics dashboard
