@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Django Application
   web:
-    build: 
+    build:
       context: .
       dockerfile: ./docker/Dockerfile
     image: greenbridge_web:latest
@@ -13,10 +13,9 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     env_file: ./.env
-    depends_on:
-      - db
-      - redis
-    command: gunicorn greenbridge.wsgi:application --bind 0.0.0.0:8000 --workers 4 --threads 4
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
     networks:
       - greenbridge_network
     

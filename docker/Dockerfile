@@ -43,7 +43,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpango-1.0-0 \
     libpangoft2-1.0-0 \
     libcairo2 \
-    libgdal30 \
+    libgdal36 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -67,7 +67,7 @@ USER django
 
 # Run entrypoint script
 COPY ./docker/entrypoint.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 
 # Default command
-CMD ["gunicorn", "greenbridge.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--threads", "4"] 
+# CMD ["gunicorn", "greenbridge.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--threads", "4"] 
